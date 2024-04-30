@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row pt-3">
+
+
+        @if (products.length !=0)
+        {
+
+        <div class="row">
+
+            @for (item of products; track $index) {
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-6">
+                                {{item.name}}
+                            </div>
+                            <div class="col-6 text-end">
+                                {{item.price}} $
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <p>{{item.description}}</p>
+
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="row">
+                            <div class="col-15">
+                                <small>Product ID = {{item.id}}</small>
+
+                                <div id="addToCart">
+
+
+                                    <button type="button" class="btn btn-primary btn-sm" (click)="addToCart(item)">Add
+                                        to Cart</button>
+                                    <!-- <button type="button" class="btn btn-primary btn-sm" >Add to Cart</button>  -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            }
+
+        </div>
+        }
+        @else
+        {
+        <div class="row">
+            <div class="col-12 text-center">
+                <h4>No Product Found</h4>
+            </div>
+        </div>
+        }
+
+
+
+
+    </div>
+</div>

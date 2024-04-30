@@ -1,0 +1,41 @@
+<ng-container *ngIf="Product.length !=0 ">
+    <div class="card-table">
+        <div class="card-products">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Description</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let items of Product; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{items.name}}</td>
+                    <td>{{items.price}}</td>
+                    <td>{{items.description}}</td>
+               
+                           
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td><button (click)="clearCart()" class="btn btn-danger">Empty Cart</button></td>
+                        <td><button [routerLink]="['/layout/productlist']" routerLinkActive="router-link-active"  class="btn btn-primary">Shop More</button></td>
+                        <td><button (click)="OrderNow()" class="btn btn-success">Order</button></td>
+                        <!-- <td><strong>Grnad Total : $ {{grandTotal}}</strong></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </ng-container>
+    
+    <ng-container *ngIf="Product.length == 0">
+    <div style="margin: auto;"><strong>No item Found</strong></div>
+    </ng-container>
+    
+    <router-outlet></router-outlet>

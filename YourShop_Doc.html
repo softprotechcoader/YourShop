@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>YourShop_Doc.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="project-title">Project Title</h1>
+<p>&quot;YourShop: A Basic E-Commerce Demo Site with Angular Routing and CRUD Operations&quot;</p>
+<h2 id="introduction">Introduction</h2>
+<p>&quot;YourShop&quot; is a basic e-commerce demo site built with Angular. It showcases key features of Angular such as routing, child routes, and services. The application includes user authentication with login and registration functionality. It also demonstrates CRUD operations, which are fundamental for any real-world application. Data persistence is achieved using Local Storage. This project serves as a practical guide for understanding and implementing these features in Angular.</p>
+<h2 id="description">Description</h2>
+<p>&quot;YourShop&quot; is an e-commerce demo site that serves as a practical example of an Angular application. It incorporates essential features such as routing and child routes for navigation, services for managing data flow, and Local Storage for data persistence. The application also includes user authentication mechanisms with login and registration features. Furthermore, it demonstrates CRUD (Create, Read, Update, Delete) operations, which are integral to any data-driven application. This project is an excellent resource for developers seeking to understand and implement these Angular features in a real-world context.</p>
+<h2 id="installation">Installation</h2>
+<p>Follow these steps to set up and run the &quot;YourShop&quot; project:</p>
+<ol>
+<li>
+<p><strong>Install Node.js and npm</strong>: Angular requires Node.js version 10.9.0 or later. You can download Node.js from <a href="https://nodejs.org/en/download/">here</a>. This will also install npm (Node Package Manager) which is used to manage Node.js packages.</p>
+</li>
+<li>
+<p><strong>Install Angular CLI</strong>: The Angular CLI is a command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications. Install it globally using npm:</p>
+<pre class="hljs"><code><div>npm install -g @angular/cli
+</div></code></pre>
+</li>
+<li>
+<p><strong>Clone the repository</strong>: Clone the &quot;YourShop&quot; project repository from GitHub to your local machine.</p>
+</li>
+<li>
+<p><strong>Install project dependencies</strong>: Navigate to the project directory and run the following command to install the necessary dependencies:</p>
+<pre class="hljs"><code><div>npm install
+</div></code></pre>
+</li>
+<li>
+<p><strong>Run the application</strong>: Start the development server with the following command:</p>
+<pre class="hljs"><code><div>ng serve
+</div></code></pre>
+<p>The application will be available at <code>http://localhost:4200/</code>.</p>
+</li>
+<li>
+<p><strong>Install Bootstrap</strong>: This project uses Bootstrap for styling. Install it using npm:</p>
+<pre class="hljs"><code><div>npm install bootstrap
+</div></code></pre>
+<p>Then, add the Bootstrap CSS file in the &quot;styles&quot; array inside the <code>angular.json</code> file:</p>
+<pre class="hljs"><code><div><span class="hljs-string">"styles"</span>: [
+  <span class="hljs-string">"node_modules/bootstrap/dist/css/bootstrap.min.css"</span>,
+  <span class="hljs-string">"src/styles.css"</span>
+],
+</div></code></pre>
+</li>
+</ol>
+<p>Remember to restart the server after installing Bootstrap. You can stop the server by pressing <code>Ctrl+C</code> in the terminal, and start it again with <code>ng serve</code>.</p>
+<h2 id="use-cases-and-functionality">Use Cases and Functionality</h2>
+<p>&quot;YourShop&quot; is designed to demonstrate a variety of use cases common in e-commerce applications. Here are the main functionalities provided by the application:</p>
+<h2 id="user-registration-and-login">User Registration and Login</h2>
+<h3 id="user-registration">User Registration</h3>
+<p>The following code snippet from <code>login.component.ts</code> handles user registration in the application. It creates a <code>signUp</code> object to hold the user's information and an array <code>signUpArray</code> to store these objects. The <code>onsignUp()</code> method is called when the user submits the registration form. This method adds the <code>signUp</code> object to the <code>signUpArray</code> and then stores the array in Local Storage. An alert is displayed to the user to confirm successful registration.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">//create a SignUp Object</span>
+signUp: <span class="hljs-built_in">any</span> = {
+  userId: <span class="hljs-string">''</span>,
+  email: <span class="hljs-string">''</span>,
+  password: <span class="hljs-string">''</span>,
+};
+
+<span class="hljs-comment">//create an array to store the signUp objects</span>
+signUpArray: <span class="hljs-built_in">any</span> = [];
+
+onsignUp(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-comment">// Store data to local storage</span>
+  <span class="hljs-keyword">this</span>.signUpArray.push(<span class="hljs-keyword">this</span>.signUp);
+  localStorage.setItem(<span class="hljs-string">'signUpArray'</span>, <span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-keyword">this</span>.signUpArray));
+  alert(<span class="hljs-string">'Registration successful'</span>);
+}
+
+</div></code></pre>
+<h3 id="user-login">User Login</h3>
+<p>The following code snippet from <code>login.component.ts</code> handles user login in the application. It retrieves the <code>signUpArray</code> from Local Storage and checks if the entered user ID and password match any of the stored user data. If a match is found, the user is navigated to the layout component. If not, appropriate error messages are displayed.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div>onSignIn(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-comment">// Retrieve data from local storage</span>
+  <span class="hljs-keyword">let</span> signUpArray = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'signUpArray'</span>));
+  
+  <span class="hljs-keyword">if</span> (signUpArray) {
+    <span class="hljs-keyword">let</span> user = signUpArray.find(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.userId === <span class="hljs-keyword">this</span>.signIn.userId);
+    
+    <span class="hljs-keyword">if</span> (user) {
+      <span class="hljs-keyword">if</span> (user.password === <span class="hljs-keyword">this</span>.signIn.password) {
+        <span class="hljs-keyword">this</span>.router.navigate([<span class="hljs-string">'/layout'</span>]); <span class="hljs-comment">// Navigate to the layout component</span>
+      } <span class="hljs-keyword">else</span> {
+        alert(<span class="hljs-string">'Incorrect password'</span>);
+      }
+    } <span class="hljs-keyword">else</span> {
+      alert(<span class="hljs-string">'User not found'</span>);
+    }
+  } <span class="hljs-keyword">else</span> {
+    alert(<span class="hljs-string">'No user registered'</span>);
+  }
+}
+</div></code></pre>
+<h2 id="ngoninit-lifecycle-hook">ngOnInit Lifecycle Hook</h2>
+<p>The following code snippet from <code>login.component.ts</code> shows the <code>ngOnInit</code> lifecycle hook. This method is called when Angular finishes initializing the component. In this case, it retrieves the <code>signUpArray</code> from Local Storage when the component is initialized.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div>ngOnInit(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-comment">// Fetch data from local storage</span>
+  <span class="hljs-keyword">const</span> storedData = localStorage.getItem(<span class="hljs-string">'signUpArray'</span>);
+  <span class="hljs-keyword">if</span> (storedData) {
+    <span class="hljs-keyword">this</span>.signUpArray = <span class="hljs-built_in">JSON</span>.parse(storedData);
+  }
+}
+</div></code></pre>
+<h2 id="crud-operations"><strong>CRUD Operations</strong></h2>
+<p>The application allows for the creation, reading, updating, and deletion of data. This is demonstrated in the management of user information and product listings.</p>
+<h2 id="class-products">Class Products</h2>
+<p>The <code>Products</code> class in <code>newproduct.component.ts</code> defines the structure of a product object in the application.</p>
+<p>This class has four properties: id, name, price, and description. The constructor method initializes these properties when a new instance of the Products class is created. ```</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div>
+<span class="hljs-comment">//create a class Products and define the properties of the product</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> Products {
+  id: <span class="hljs-built_in">number</span>;
+  name: <span class="hljs-built_in">string</span>;
+  price: <span class="hljs-built_in">string</span>;
+  description: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">this</span>.id = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">this</span>.price = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">this</span>.description = <span class="hljs-string">''</span>;
+  }
+}
+</div></code></pre>
+<h2 id="ngoninit"><code>ngOnInit</code></h2>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Fetch the list of products from Local Storage when the component is initialized</span>
+
+ngOnInit(): <span class="hljs-built_in">void</span> {
+  <span class="hljs-keyword">this</span>.products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+}
+</div></code></pre>
+<h3 id="openmodal-and-closemodal">OpenModal and CloseModal</h3>
+<p>The openModal and closeModal methods handle the opening and closing of a modal, respectively.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">//create a function to open and close the modal</span>
+
+<span class="hljs-comment">// Open the modal</span>
+openModal() {
+  <span class="hljs-keyword">let</span> modal = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myModal'</span>);
+  <span class="hljs-keyword">if</span>(modal!=<span class="hljs-literal">null</span>)
+  modal.style.display = <span class="hljs-string">"block"</span>;
+}
+
+<span class="hljs-comment">// Close the modal</span>
+closeModal() {
+  <span class="hljs-keyword">let</span> modal = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myModal'</span>);
+  <span class="hljs-keyword">if</span>(modal!=<span class="hljs-literal">null</span>)
+  modal.style.display = <span class="hljs-string">"none"</span>;
+}
+</div></code></pre>
+<h2 id="save-product-data">Save Product Data</h2>
+<p>The saveProduct method saves a new product to Local Storage and updates the list of products.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">//create a function name saveProduct to save the product to the local storage and push the product to the products array and close the modal also clear the input fields and check for duplicate product also alert user when product is added</span>
+  saveProduct() {
+    <span class="hljs-keyword">let</span> products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+    <span class="hljs-keyword">if</span> (products.length &gt; <span class="hljs-number">0</span>) {
+      <span class="hljs-comment">// Find the maximum product ID</span>
+      <span class="hljs-keyword">let</span> maxId = <span class="hljs-built_in">Math</span>.max(...products.map(<span class="hljs-function">(<span class="hljs-params">product: Products</span>) =&gt;</span> product.id));
+      <span class="hljs-keyword">this</span>.productObj.id = maxId + <span class="hljs-number">1</span>;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>.productObj.id = <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (products.some(<span class="hljs-function">(<span class="hljs-params">product: Products</span>) =&gt;</span> product.id === <span class="hljs-keyword">this</span>.productObj.id)) {
+      alert(<span class="hljs-string">'Product already exists'</span>);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    products.push(<span class="hljs-keyword">this</span>.productObj);
+    localStorage.setItem(<span class="hljs-string">'products'</span>, <span class="hljs-built_in">JSON</span>.stringify(products));
+    <span class="hljs-keyword">this</span>.products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+    <span class="hljs-keyword">this</span>.productObj = <span class="hljs-keyword">new</span> Products();
+    <span class="hljs-keyword">this</span>.closeModal();
+  }
+</div></code></pre>
+<h2 id="delete-product">Delete Product</h2>
+<p>The deleteProduct method deletes a product from Local Storage and updates the list of products.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">//create a function to delete the product from the local storage and also from the products array</span>
+  deleteProduct(product: <span class="hljs-built_in">any</span>) {
+    <span class="hljs-keyword">const</span> confirmation = confirm(<span class="hljs-string">'Are you sure you want to delete this product?'</span>);
+    <span class="hljs-keyword">if</span> (confirmation) {
+      <span class="hljs-keyword">let</span> products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; products.length; i++) {
+        <span class="hljs-keyword">if</span> (products[i].id == product.id) {
+          products.splice(i, <span class="hljs-number">1</span>);
+          <span class="hljs-keyword">break</span>;
+        }
+      }
+      localStorage.setItem(<span class="hljs-string">'products'</span>, <span class="hljs-built_in">JSON</span>.stringify(products));
+      <span class="hljs-keyword">this</span>.products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+    }
+  }
+</div></code></pre>
+<h2 id="edit-product">Edit Product</h2>
+<p>The editProduct method opens the modal for editing a product.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">//create a function to edit the product </span>
+  editProduct(product: <span class="hljs-built_in">any</span>) {
+    <span class="hljs-keyword">this</span>.productObj = product;
+    <span class="hljs-keyword">this</span>.openModal();
+  }
+</div></code></pre>
+<h2 id="update-product">Update Product</h2>
+<p>The updateProduct method updates a product in Local Storage and updates the list of products.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">//create a function to update the product in the local storage and also in the products array</span>
+  updateProduct() {
+    <span class="hljs-keyword">let</span> products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; products.length; i++) {
+      <span class="hljs-keyword">if</span> (products[i].id == <span class="hljs-keyword">this</span>.productObj.id) {
+        products[i].name = <span class="hljs-keyword">this</span>.productObj.name;
+        products[i].price = <span class="hljs-keyword">this</span>.productObj.price;
+        products[i].description = <span class="hljs-keyword">this</span>.productObj.description;
+        <span class="hljs-keyword">break</span>;
+      }
+    }
+    localStorage.setItem(<span class="hljs-string">'products'</span>, <span class="hljs-built_in">JSON</span>.stringify(products));
+    <span class="hljs-keyword">this</span>.products = <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+    <span class="hljs-keyword">this</span>.productObj = <span class="hljs-keyword">new</span> Products();
+    <span class="hljs-keyword">this</span>.closeModal();
+  }
+</div></code></pre>
+<h2 id="localstorageservice">LocalstorageService</h2>
+<p>The <code>localstorage.service.ts</code> file defines a service that handles operations related to Local Storage in the application.</p>
+<p>The LocalstorageService class is a service that is provided in the root of the application. This means that it's a singleton and the same instance is used throughout the application.</p>
+<p>The getProducts method retrieves the list of products from Local Storage. If the 'products' key does not exist in Local Storage, it returns an empty array. This method is useful for fetching the current list of products stored in the user's Local Storage.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-meta">@Injectable</span>({
+  providedIn: <span class="hljs-string">'root'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> LocalstorageService {
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) { }
+
+  <span class="hljs-comment">// Copilot Prompt</span>
+  <span class="hljs-comment">// Create a function to get the data from local storage key products</span>
+  getProducts(): <span class="hljs-built_in">any</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(<span class="hljs-string">'products'</span>) || <span class="hljs-string">'[]'</span>);
+  }
+
+}
+</div></code></pre>
+<h2 id="cartserviceservice">CartserviceService</h2>
+<p>The <code>cartservice.service.ts</code> file defines a service that handles operations related to the shopping cart in the application.</p>
+<h3 id="copilot-prompts">Copilot Prompts</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CartserviceService {
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) { }
+
+  <span class="hljs-comment">//create an array to store the cart objects</span>
+  cartArray: <span class="hljs-built_in">any</span> = [];
+
+  <span class="hljs-comment">//create a function to add to cart </span>
+  onAddToCart(product: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.cartArray.push(product);
+    alert(<span class="hljs-string">'Your product has been added to the cart!'</span>);
+  }
+
+  <span class="hljs-comment">//create a function to get the total price of the products in the cart</span>
+  getTotalPrice(): <span class="hljs-built_in">any</span> {
+    <span class="hljs-keyword">let</span> totalPrice = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.cartArray.length; i++) {
+      totalPrice += <span class="hljs-keyword">this</span>.cartArray[i].quantity * <span class="hljs-keyword">this</span>.cartArray[i].price;
+    }
+    <span class="hljs-keyword">return</span> totalPrice;
+  }
+
+  <span class="hljs-comment">//create a function to remove the product from the cart</span>
+  onRemoveFromCart(product: <span class="hljs-built_in">any</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.cartArray.length; i++) {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.cartArray[i].productId === product.productId) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.cartArray[i].quantity &gt; <span class="hljs-number">1</span>) {
+          <span class="hljs-keyword">this</span>.cartArray[i].quantity--;
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">this</span>.cartArray.splice(i, <span class="hljs-number">1</span>);
+        }
+      }
+    }
+  }
+
+  <span class="hljs-comment">//create a function to clear the cart and remove all the products from the cart</span>
+  onClearCart(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.cartArray = [];
+    <span class="hljs-keyword">this</span>.getTotalPrice();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.cartArray;
+    
+  }
+
+
+  <span class="hljs-comment">//create a function to get the cart array</span>
+  getCartArray(): <span class="hljs-built_in">any</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.cartArray;
+    
+     
+  }
+}
+</div></code></pre>
+<h2 id="productlist-component">Productlist Component</h2>
+<p>The <code>productlist.component.ts</code> file defines a component that handles operations related to the product list in the application.</p>
+<p>The ProductlistComponent class is a component that manages the product list operations in the application. It has a products property that stores the product objects.</p>
+<p>The constructor of the ProductlistComponent class injects the LocalstorageService and CartserviceService services. It also initializes the products property with the products from Local Storage.</p>
+<p>The ngOnInit method is a lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. In this case, it retrieves the list of products from the LocalstorageService when the component is initialized.</p>
+<p>The addToCart method adds a product to the cart. It checks if the product is already in the cart. If it is, it displays an alert message indicating that the product is already in the cart and returns. If the product is not in the cart, it adds the product to the cart by calling the onAddToCart method of the CartserviceService.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'app-productlist'</span>,
+  templateUrl: <span class="hljs-string">'./productlist.component.html'</span>,
+  styleUrls: [<span class="hljs-string">'./productlist.component.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProductlistComponent <span class="hljs-keyword">implements</span> OnInit {
+  
+  <span class="hljs-comment">//create an array to store the products</span>
+  products: <span class="hljs-built_in">any</span> = [];
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"> <span class="hljs-keyword">private</span> LocalstorageService: LocalstorageService, <span class="hljs-keyword">private</span> CartserviceService: CartserviceService</span>) {
+  
+  }
+
+  ngOnInit(): <span class="hljs-built_in">void</span> {
+
+    <span class="hljs-comment">//get the data from the LocalstorageService </span>
+    <span class="hljs-keyword">this</span>.products = <span class="hljs-keyword">this</span>.LocalstorageService.getProducts();
+  }
+
+  <span class="hljs-comment">//create a function to add the product to the cart and call the function onAddToCart from the cart service and pass the product check for duplicate product and alart user</span>
+  addToCart(product: <span class="hljs-built_in">any</span>) {
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.CartserviceService.cartArray.length &gt; <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.CartserviceService.cartArray.length; i++) {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.CartserviceService.cartArray[i].id == product.id) {
+          alert(<span class="hljs-string">'Product already in the cart'</span>);
+          <span class="hljs-keyword">return</span>;
+        }
+      }
+    }
+    <span class="hljs-keyword">this</span>.CartserviceService.onAddToCart(product);
+  }
+}
+
+</div></code></pre>
+<h2 id="cartcomponent">CartComponent</h2>
+<p>The <code>cart.component.ts</code> file defines a component that handles operations related to the cart in the application.</p>
+<p>The CartComponent class is a component that manages the cart operations in the application.</p>
+<p>The removeFromCart method removes a product from the cart by calling the onRemoveFromCart method of the CartserviceService.</p>
+<p>The clearCart method clears the cart by calling the onClearCart method of the CartserviceService and then reloads the window.</p>
+<p>The getTotalPrice method gets the total price of the products in the cart by calling the getTotalPrice method of the CartserviceService.</p>
+<p>The OrderNow method places an order, displays an alert message indicating that the order has been placed successfully, clears the cart by calling the onClearCart method of the CartserviceService, and then reloads the window.</p>
+<p><strong>Copilot Prompt</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CartComponent <span class="hljs-keyword">implements</span> OnInit {
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> CartserviceService: CartserviceService</span>) { }
+
+  <span class="hljs-comment">//create a function to remove the product from the cart and call the function onRemoveFromCart from the cart service and pass the product</span>
+  removeFromCart(product: <span class="hljs-built_in">any</span>) {
+    <span class="hljs-keyword">this</span>.CartserviceService.onRemoveFromCart(product);
+  }
+
+  <span class="hljs-comment">//create a function to clear the cart and call the function onClearCart from the cart service</span>
+  clearCart() {
+    <span class="hljs-keyword">this</span>.CartserviceService.onClearCart();
+    <span class="hljs-built_in">window</span>.location.reload();
+  }
+
+  <span class="hljs-comment">//create a function to get the total price of the products in the cart and call the function getTotalPrice from the cart service</span>
+  getTotalPrice() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.CartserviceService.getTotalPrice();
+  }
+
+  <span class="hljs-comment">//create a function name OrderNow to alert the user as "Order placed successfully" and clear the cart</span>
+  OrderNow() {
+    alert(<span class="hljs-string">'Order placed successfully'</span>);
+    <span class="hljs-keyword">this</span>.CartserviceService.onClearCart();
+    <span class="hljs-built_in">window</span>.location.reload();
+  }
+}
+</div></code></pre>
+<h2 id="license">License</h2>
+<p><code>put-your-code-here</code></p>
+<p>Information about the license.</p>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!-- FILEPATH: /C:/M P/Angular/Angular Copilot/YouShop V2 New/yourShop/src/app/login/login.component.html -->
+<!-- BEGIN: abpxx6d04wxr -->
+<div class="container" style="margin-top: 50px;">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h2 class="text-center">Login</h2>
+            <form>
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" class="form-control" id="userId" placeholder="Enter User ID" [(ngModel)]="signIn.userId" name="userId" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="signIn.password" name="password" required>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <button type="submit" class="btn btn-primary" (click)="onsignIn()">Login</button>
+                </div>
+            </form>
+            <p class="text-center">New User? <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">Register here</a></p>
+        </div>
+    </div>
+</div>
+<!-- END: abpxx6d04wxr -->
+
+
+
+<!-- Button to Open the Modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Open modal
+  </button> -->
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">SignUp</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" class="form-control" id="userId" placeholder="Enter User ID" [(ngModel)]="signUp.userId" name="userId" required>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="text" class="form-control" id="emailId" placeholder="Enter Email ID" [(ngModel)]="signUp.emailId" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="signUp.password" name="password" required>
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <button type="submit" class="btn btn-primary" (click)="onsignUp()">SignUp</button>
+                </div>
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
