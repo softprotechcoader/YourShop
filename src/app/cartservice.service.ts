@@ -45,19 +45,11 @@ export class CartserviceService {
     this.cartArray = [];
     this.getTotalPrice();
     return this.cartArray;
-    
+
   }
-
-  // onClearCart(): void {
-  //   this.cartArray = [];
-  //   this.getTotalPrice();
-  // }
-
   //create a function to get the cart array
   getCartArray(): any {
     return this.cartArray;
-    
-     
   }
 
 }

@@ -7,19 +7,19 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule , RouterModule, RouterOutlet],
+  imports: [FormsModule, RouterModule, RouterOutlet],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+
     //fetch data from local storage
     const storedData = localStorage.getItem('signUpArray');
     if (storedData) {
       this.signUpArray = JSON.parse(storedData);
     }
-    
+
   }
   constructor(private router: Router) { }
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
     userId: '',
     email: '',
     password: '',
-    
+
   };
 
   //create an array to store the signUp objects
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit{
 
 }
 
-  
+
 
 
 

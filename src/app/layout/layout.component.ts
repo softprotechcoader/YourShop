@@ -16,20 +16,16 @@ export class LayoutComponent implements OnInit{
   signUpArray: any;
   constructor(private router: Router, private CartserviceService:CartserviceService)
    { 
-      //fetch data from local storage key signupArray 
-     const storedData = localStorage.getItem('signUpArray');
-        if (storedData) {
-          this.signUpArray = JSON.parse(storedData);
-        }
-
-      
- 
    }
 
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-    this.CartserviceService.getCartArray()
 
+    this.CartserviceService.getCartArray()
+       //fetch data from local storage key signupArray 
+       const storedData = localStorage.getItem('signUpArray');
+       if (storedData) {
+         this.signUpArray = JSON.parse(storedData);
+       }
   }
 
   //create function to SignOut and navigate to the login page

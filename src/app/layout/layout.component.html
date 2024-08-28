@@ -18,7 +18,7 @@
                     <a class="nav-link" [routerLink]="['/layout/newproduct']" routerLinkActive="router-link-active" >Admin</a> 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="router-link-active" routerLink="/layout/productlist">Products</a>
+                    <a class="nav-link" routerLinkActive="router-link-active" routerLink="/layout/productlist">Plans</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="router-link-active" routerLink="/layout/cart">Cart</a>
@@ -26,7 +26,7 @@
             </ul>
             
             <form class="d-flex">
-            <div class="navbar-brand" href="#"><b>Welcome </b> {{signUpArray?.userId }}  </div>
+            <div class="navbar-brand" href="#"><b>Welcome </b> {{signUpArray.userId}}  </div>
            
             <button class="btn btn-outline-danger" type="button" (click)="signOut()">Sign Out</button>
         </form>
